@@ -122,9 +122,11 @@ func Execute(code Block) Result {
 		// execute and write output
 		cmd := exec.Command(command[0], command[1:]...)
 		out, err := cmd.CombinedOutput()
-		output.Write(out)
+		leanOut := strings.Replace(string(out), f.Name(), "<file>", -1)
+		output.Write([]byte(leanOut))
 		if err != nil {
-			output.Write([]byte(err.Error()))
+			leanErr := strings.Replace(err.Error(), f.Name(), "<file>", -1)
+			output.Write([]byte(leanErr))
 		}
 
 		// update status code
