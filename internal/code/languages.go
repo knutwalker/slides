@@ -76,7 +76,7 @@ var Languages = map[string]Language{
 	},
 	Java: {
 		Extension: "java",
-		Commands:  cmds{{"java", "<file>"}},
+		Commands:  cmds{{"java", "--enable-preview", "--source=20", "<file>"}},
 	},
 	Julia: {
 		Extension: "jl",
